@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hwj.system.mapper.SysPostMapper">
+
+
+    <resultMap id="PostMap" type="com.hwj.model.system.SysPost" autoMapping="true"></resultMap>
+
+    <!-- 条件分页查询岗位 -->
+    <select id="selectPage" resultMap="PostMap">
+        SELECT id, post_code, name, description, status, create_time, update_time, is_deleted
+        FROM sys_post
+        <where>
+            <if test="vo.name != null and vo.name != ''">
+                AND name LIKE CONCAT('%', #{vo.name}, '%')
+            </if>
+            <if test="vo.status != null">
+                AND status = #{vo.status}
+            </if>
+            AND is_deleted = 0
+        </where>
+        ORDER BY id ASC
+    </select>
+</mapper>
