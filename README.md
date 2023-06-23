@@ -31,4 +31,4 @@
 
 ### 项目采用前后端分离
 
-​https://github.com/heweijiqn/system-front  
+https://github.com/heweijiqn/system-front.git
